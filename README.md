@@ -1,14 +1,7 @@
-# Autonomous-Method-Database
+# Lab Data Architecture
 
-Digital Method Lifecycle: an interactive explainer of the fully digital analytical method lifecycle, built around a centralized method database.
+A target state for harmonized, AI-ready lab data: an interactive 3D model in six layers, from labs and instruments up through lab systems, integration, the data platform and a semantic layer to the people and AI that use the data.
 
-Open `index.html` in a browser. It is a single self-contained page; it loads fonts from Google Fonts and three.js from cdnjs for the 3D view.
+Open `index.html` in a browser. three.js r128 (MIT licence) is inlined so the page works offline; fonts load from Google Fonts.
 
-Sections:
-
-- The eight-step method lifecycle
-- A 3D view of the method DB inside the enterprise data warehouse, with the systems and labs that feed it
-- A worked example run of one test through the whole loop (fictional names and numbers)
-- The systems a method database sits between
-- Eight foundations for making it work
-- A plain-language glossary
+© 2026 Haris Khan. This asset is owned by Haris Khan. Distribution is not permitted without explicit permission from the owner.
