@@ -276,8 +276,8 @@ footer{color:#000;font-size:13px;border-top:1px solid #000;padding-top:16px;marg
 <main class="wrap">
 <section id="arch" class="sec wide">
   <div class="sec-head">
-    <h2>Six layers, one question: does the data mean the same thing everywhere?</h2>
-    <p class="lede">Labs and instruments at the bottom, then the lab systems, the integration layer, the data platform, a semantic layer and, on top, the people and AI that use the data. Drag to turn, scroll to zoom, pick anything in the model to see what it does.</p>
+    <h2>Does the data mean the same thing in every layer?</h2>
+    <p class="lede">The model has six layers. Labs and instruments sit at the bottom, with the lab systems, the integration layer, the data platform and a semantic layer above them, and the people and AI that use the data on top. Drag to turn it, scroll to zoom, and click anything to see what it does.</p>
   </div>
   <div class="sec-body">
     <div class="x3-tools">
@@ -293,14 +293,14 @@ footer{color:#000;font-size:13px;border-top:1px solid #000;padding-top:16px;marg
         <canvas id="x3-canvas" aria-label="3D model of a lab data architecture in six layers"></canvas>
         <div class="x3-labels" id="x3-labels"></div>
         <div class="x3-fallback" id="x3-fallback" hidden>The 3D view needs WebGL, which this browser has turned off. The panel beside it still describes every layer.</div>
-        <div class="x3-layer-tags mono" aria-hidden="true"><span>drag to rotate · scroll to zoom</span></div>
+        <div class="x3-layer-tags mono" aria-hidden="true"><span>drag to rotate, scroll to zoom</span></div>
       </div>
       <article class="panel x3-panel" id="x3-panel" aria-live="polite"></article>
     </div>
-    <p class="note" style="margin-top:10px">An illustrative landscape: system names are generic categories, not any one company. Standards and patterns named in the target are examples of current industry direction, not a product recommendation.</p>
+    <p class="note" style="margin-top:10px">The system names are generic categories and don't describe any one company. The standards and patterns in the target state are examples of where the industry is going, and none of them is a product recommendation.</p>
   </div>
 </section>
-<footer>A vision explainer for the pharmaceutical analytical community. Target state reflects published direction on FAIR and machine-actionable data, instrument standards (SiLA 2, OPC UA LADS, Allotrope ASM), lakehouse zones and data products with data contracts, semantic layers and knowledge graphs, and governed AI agent access.</footer>
+<footer>Written for people who work with pharmaceutical lab data. The target state draws on the FAIR principles for machine-actionable data, the SiLA 2, OPC UA LADS and Allotrope ASM standards, lakehouse zones, data products with data contracts, knowledge graphs, and governed access for AI agents.</footer>
 </main>
 <script>/* three.js r128, MIT licence, inlined so the file works offline */
 /**
@@ -320,10 +320,10 @@ let fut=true,t=1,sel=null,walkT=null,walkI=0;
 
 /* ================= content ================= */
 const LAYERS=[
- {id:"L_use",name:"People and AI",cur:"Reports, dashboards and a few AI pilots, each fed by its own extract.",fut:"People, analytics and AI agents read the same governed data products and the same definitions."},
- {id:"L_sem",name:"Semantic layer",cur:"There is none. Each system defines products, materials, methods and instruments its own way.",fut:"Shared business meaning: an ontology-aligned model of reference and master data, held as a knowledge graph."},
+ {id:"L_use",name:"People and AI",cur:"Reports, dashboards and a few AI pilots, each fed by its own extract.",fut:"Analysts, dashboards and AI agents all read the same governed data products and definitions."},
+ {id:"L_sem",name:"Semantic layer",cur:"There is none. Each system defines products, materials, methods and instruments its own way.",fut:"Products, materials, methods and instruments are defined once, aligned to an ontology and held as a knowledge graph."},
  {id:"L_plat",name:"Data platform",cur:"A results warehouse loaded by one custom pipeline per source, plus archives and file shares.",fut:"Lakehouse zones: raw data kept as captured, standardized data, and curated data products, all under one governance layer."},
- {id:"L_int",name:"Integration",cur:"Point-to-point links, file drops and manual transcription between systems.",fut:"One orchestration and event backbone: systems publish and subscribe through APIs and events instead of to each other."},
+ {id:"L_int",name:"Integration",cur:"Point-to-point links, file drops and manual transcription between systems.",fut:"Each system connects once, to a shared orchestration and event backbone, and publishes and subscribes through APIs and events."},
  {id:"L_sys",name:"Lab systems",cur:"ELN, LIMS, LES, CDS, QMS, document and inventory systems, each with its own master data.",fut:"The same systems, now taking reference data from the semantic layer and exchanging data through the backbone."},
  {id:"L_lab",name:"Labs and instruments",cur:"Instruments write proprietary files that are exported by hand or by vendor-specific scripts.",fut:"Instruments use open device standards, so they are discovered, controlled and read the same way."}
 ];
@@ -333,7 +333,7 @@ const NODES={
  LES:{n:"LES",l:"L_sys",cur:"Guided execution, with procedures copied in from documents.",fut:"Executes the current method version and records each step as data."},
  CDS:{n:"CDS",l:"L_sys",cur:"Chromatography data in proprietary formats; mostly final results leave the system.",fut:"Every run, including system suitability and reference standard data, is captured and standardized at ingestion."},
  QMS:{n:"QMS",l:"L_sys",cur:"Deviations and change control, rarely linked to the data they concern.",fut:"Deviations and changes link to the runs, methods and batches they concern."},
- DOC:{n:"Doc Mgmt",l:"L_sys",cur:"Methods, SOPs and reports held as documents.",fut:"Documents stay as the record; the key facts in them are also held as structured data."},
+ DOC:{n:"Doc Mgmt",l:"L_sys",cur:"Methods, SOPs and reports held as documents.",fut:"Documents stay as the record; the main facts in them are also held as structured data."},
  INV:{n:"Inventory",l:"L_sys",cur:"Reagents, standards and columns tracked on paper or spreadsheets.",fut:"Materials and equipment registered once, with IDs every system reuses."},
  REFC:{n:"Reference data per system",l:"L_sys",cur:"Each system keeps its own lists of products, materials, instruments and methods, so the same thing carries a different name and ID in each."},
  P2P:{n:"Point-to-point links",l:"L_int",cur:"Custom interfaces built system to system. Each is maintained separately and breaks when either end changes."},
@@ -350,20 +350,20 @@ const NODES={
  REP:{n:"Reports",l:"L_use",cur:"Built from extracts; numbers differ by source.",fut:"Built on data products, so the same question gives the same answer."},
  DASH:{n:"Dashboards",l:"L_use",cur:"One per team and source.",fut:"Self-service on governed data products."},
  ML:{n:"Data science and ML",l:"L_use",cur:"Most of the effort goes into finding and cleaning data.",fut:"Features come from data products with known lineage."},
- AIP:{n:"AI pilots",l:"L_use",cur:"AI cannot reason over data whose meaning is not defined, so pilots stay pilots."},
+ AIP:{n:"AI pilots",l:"L_use",cur:"AI can't work reliably with data whose meaning was never defined, so most pilots never reach production."},
  AG:{n:"AI agents",l:"L_use",fut:"Agents reach data and tools through governed interfaces, for example the Model Context Protocol, and read meaning from the semantic layer."},
  QCLAB:{n:"QC labs",l:"L_lab",cur:"Routine and release testing.",fut:"Routine and release testing on connected instruments."},
  DEVLAB:{n:"Development labs",l:"L_lab",cur:"Method development and studies.",fut:"Method development and studies on connected instruments."},
  DEV:{n:"Instruments",l:"L_lab",cur:"Proprietary formats; data leaves by export or by hand.",fut:"Open device standards such as SiLA 2 and OPC UA LADS make instruments discoverable and readable the same way."}
 };
 const OVER={
- cur:{title:"Every system is its own island",lede:"Data moves, but its meaning does not travel with it.",items:[
+ cur:{title:"Every system is its own island",lede:"Data gets copied between systems, but each one defines products, materials and methods its own way.",items:[
   ["1","Siloed and fragmented across systems, linked point to point."],
   ["2","Reference and master data defined separately in every system."],
   ["3","Unstructured and semi-structured data keeps piling up in files."],
   ["4","One custom pipeline per source; results arrive last and only as final values."],
-  ["5","AI cannot reason over what is not clearly defined."]]},
- fut:{title:"Harmonized, governed, AI-ready",lede:"Six design choices, each reflecting where the industry is heading.",items:[
+  ["5","AI can't work reliably with data that has no shared definitions."]]},
+ fut:{title:"What the target state changes",lede:"It rests on six design choices.",items:[
   ["1","Capture at the source in open standards: SiLA 2 and OPC UA LADS for devices, Allotrope ASM for data."],
   ["2","One orchestration and event backbone instead of point-to-point links."],
   ["3","Lakehouse zones: raw kept as captured, standardized, then curated data products."],
