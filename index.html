@@ -587,5 +587,14 @@ function frame(now){
 window.__daApply=apply;apply();requestAnimationFrame(frame);
 })();
 </script>
+<script>
+/* visit counting: GoatCounter, cookieless, no external script. Counts only on the live site. */
+(function(){
+  if(location.hostname!=='khanahmadharis.github.io') return;
+  const q = new URLSearchParams({p: location.pathname, t: document.title, r: document.referrer, q: location.search,
+    s: [screen.width, screen.height, window.devicePixelRatio||1].join(','), rnd: Math.random().toString(36).slice(2)});
+  new Image().src = 'https://pharmapipelinemap.goatcounter.com/count?' + q;
+})();
+</script>
 </body>
 </html>
